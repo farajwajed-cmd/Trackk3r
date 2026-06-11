@@ -40,8 +40,8 @@ app.get("/xss", (req, res) => {
         path: req.path,
         method: req.method
     }
-    fs.writeFile('./gogogogs.txt', `connection ! : method : ${data.method}/ ip : ${data.ip} / url : ${data.host}${data.path} / is_xhr : ${data.is_async} / {${time()}} \n<br>`, { flag: "a", encoding: "utf-8" }, () => { })
-    fs.writeFile('./gogogogs.txt', '_______________\n<br>', { flag: "a", encoding: "utf-8" }, () => { })
+    fs.writeFile('./ServerLogs.txt', `connection ! : method : ${data.method}/ ip : ${data.ip} / url : ${data.host}${data.path} / is_xhr : ${data.is_async} / {${time()}} \n<br>`, { flag: "a", encoding: "utf-8" }, () => { })
+    fs.writeFile('./ServerLogs.txt', '_______________\n<br>', { flag: "a", encoding: "utf-8" }, () => { })
     res.end()
 
 })
@@ -54,8 +54,8 @@ app.post('/xss', (req, res) => {
         method: req.method
 
     }
-    fs.writeFile('./gogogogs.txt', `connection ! : method : ${data.method}/ ip : ${data.ip} / url : ${data.host}${data.path} / is_xhr : ${data.is_async} / {${time()}} \n`, { flag: "a", encoding: "utf-8" }, () => { })
-    fs.writeFile('./gogogogs.txt', '_______________\n', { flag: "a", encoding: "utf-8" }, () => { })
+    fs.writeFile('./ServerLogs.txt', `connection ! : method : ${data.method}/ ip : ${data.ip} / url : ${data.host}${data.path} / is_xhr : ${data.is_async} / {${time()}} \n`, { flag: "a", encoding: "utf-8" }, () => { })
+    fs.writeFile('./ServerLogs.txt', '_______________\n', { flag: "a", encoding: "utf-8" }, () => { })
     res.end()
 
 })
@@ -67,8 +67,8 @@ app.put('/xss', (req, res) => {
         path: req.path,
         method: req.method,
     }
-    fs.writeFile('./gogogogs.txt', `connection ! : method : ${data.method}/ ip : ${data.ip} / url : ${data.host}${data.path} / is_xhr : ${data.is_async} / {${time()}} \n<br>`, { flag: "a", encoding: "utf-8" }, () => { })
-    fs.writeFile('./gogogogs.txt', '_______________\n<br>', { flag: "a", encoding: "utf-8" }, () => { })
+    fs.writeFile('./ServerLogs.txt', `connection ! : method : ${data.method}/ ip : ${data.ip} / url : ${data.host}${data.path} / is_xhr : ${data.is_async} / {${time()}} \n<br>`, { flag: "a", encoding: "utf-8" }, () => { })
+    fs.writeFile('./ServerLogs.txt', '_______________\n<br>', { flag: "a", encoding: "utf-8" }, () => { })
     res.end()
 })
 
@@ -77,7 +77,7 @@ app.put('/xss', (req, res) => {
 //admin routes :
 app.get('/deleteAllLogs/:pass', (req, res) => {
     if (req.params.pass == password) {
-        fs.writeFile('./gogogogs.txt', `------last delete ${time()}------<br>`, { flag: "w", encoding: "utf-8" }, () => { })
+        fs.writeFile('./ServerLogs.txt', `------last delete ${time()}------<br>`, { flag: "w", encoding: "utf-8" }, () => { })
         res.end()
     } else {
         res.end()
@@ -87,7 +87,7 @@ app.get("/getAllLogs/:pass", (req, res) => {
     if (req.params.pass == password) {
 
         function showLogs() {
-            let b = fs.readFileSync("./gogogogs.txt", "utf8", () => { })
+            let b = fs.readFileSync("./ServerLogs.txt", "utf8", () => { })
             return b;
         }
 
