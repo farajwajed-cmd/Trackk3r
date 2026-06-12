@@ -3,6 +3,7 @@ const fs = require('fs');
 const { Json } = require("sequelize/lib/utils");
 const cors = require("cors")
 const app = express()
+app.set('trust proxy', true);
 const password = process.env.PASSWORD;
 
 const time = function () {
